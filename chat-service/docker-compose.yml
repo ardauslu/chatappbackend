@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  redis:
+    image: redis:7
+    container_name: chat_redis
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: chat_rabbitmq
+    ports:
+      - "5672:5672"   # AMQP protokolü için
+      - "15672:15672" # Yönetim arayüzü için
+    restart: unless-stopped
